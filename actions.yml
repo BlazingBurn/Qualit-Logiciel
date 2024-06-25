@@ -1,0 +1,25 @@
+name: "AI Code Reviewer"
+description: "Uses GPT-3.5 to review code changes."
+inputs:
+  GITHUB_TOKEN:
+    description: "GitHub token"
+    required: true
+  OPENAI_API_KEY:
+    description: "OpenAI API key"
+    required: true
+  OPENAI_API_MODEL:
+    description: "OpenAI API model"
+    required: false
+    default: "gpt-3.5-turbo"
+  exclude:
+    description: "Exclude patterns"
+    required: false
+    default: "**/*.json, **/*.md"
+
+runs:
+  using: "python"
+  main: "main.py"
+
+branding:
+  icon: "robot"
+  color: "blue"
