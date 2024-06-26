@@ -35,10 +35,11 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const response = fs.readFileSync('response.txt', 'utf8');
+            const path = 'response.txt';
+            const response = fs.readFileSync(path, 'utf8');
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 👋 response
+              body: response
             })
