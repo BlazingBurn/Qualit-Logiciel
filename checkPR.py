@@ -44,7 +44,7 @@ response_content = message.content
 print(response_content)
 
 # Step 4: Extract the response content
-if hasattr(message.content, 'text'):
+if message.content:
     response_content = message.content.text
 else:
     response_content = "No recommendations returned from the API."
