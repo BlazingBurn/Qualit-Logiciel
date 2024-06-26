@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
 
-      - name: execute py script - AI Code Reviewer # run main.py
+      - name: execute py script - AI Code Reviewer
         env: 
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python checkPR.py
