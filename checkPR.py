@@ -43,12 +43,10 @@ message = client.messages.create(
 response_content = message.content
 print(message.content)
 
-# Convert the list to a string (if it is a list)
+# Convert response_content to a string if it is a list
 if isinstance(response_content, list):
-    response_text = '\n'.join(block['text'] if isinstance(block, dict) and 'text' in block else str(block) for block in response_content)
-else:
-    response_text = str(response_content)
-    
+    response_content = '\n'.join(item['text'] for item in response_content if 'text' in item)
+
 # Save the response to a file
 with open('response.txt', 'w') as file:
     file.write(response_content)
