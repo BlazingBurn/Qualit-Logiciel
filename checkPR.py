@@ -45,7 +45,9 @@ print(message.content)
 
 # Convert the list to a string (if it is a list)
 if isinstance(response_content, list):
-    response_content = '\n'.join(response_content)
+    response_text = '\n'.join(block['text'] if isinstance(block, dict) and 'text' in block else str(block) for block in response_content)
+else:
+    response_text = str(response_content)
     
 # Save the response to a file
 with open('response.txt', 'w') as file:
