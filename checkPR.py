@@ -39,4 +39,10 @@ message = client.messages.create(
         content_for_api
     ]
 )
+
+response_content = message.content
 print(message.content)
+
+# Save the response to a file
+with open('response.txt', 'w') as file:
+    file.write(response_content)
