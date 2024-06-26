@@ -41,10 +41,13 @@ message = client.messages.create(
 )
 
 response_content = message.content
+print(response_content)
 
-# Convert response_content to a string if it is a list
-if isinstance(response_content, list):
-    response_content = '\n'.join(item['text'] for item in response_content if 'text' in item)
+# Step 4: Extract the response content text from the list
+if message.content and isinstance(message.content, list):
+    response_content = message.content[0].get('text', '')
+else:
+    response_content = "No recommendations returned from the API."
 
 print(response_content)
 # Save the response to a file
