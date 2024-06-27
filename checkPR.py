@@ -42,15 +42,9 @@ response_content = message.content
 print("Premiere response content : ");
 print(response_content);
 
-print("Test get [0] : ");
-print(message.content[0]);
-
-print("Test get text : ");
-print(message.content[0].text);
-
 # Step 4: Extract the response content
 if message.content:
-    response_content = message.content.text
+    response_content = message.content[0].text
 else:
     response_content = "No recommendations returned from the API."
 
