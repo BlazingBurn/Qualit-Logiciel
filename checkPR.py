@@ -20,8 +20,6 @@ content_for_api = {
     ]
 }
 
-print(content_for_api)
-
 # Step 3: Call the Anthropics API with the git diff content
 try:
     ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
@@ -41,7 +39,10 @@ message = client.messages.create(
 )
 
 response_content = message.content
-print(response_content)
+print("Premiere response content : " + response_content)
+
+print("Test get [0] : " + message.content[0])
+print("Test get text : " + message.content[0].text)
 
 # Step 4: Extract the response content
 if message.content:
@@ -49,7 +50,7 @@ if message.content:
 else:
     response_content = "No recommendations returned from the API."
 
-print(response_content)
+print("Deuxime response content : " + response_content)
 
 # Save the response to a file
 with open('response.txt', 'w') as file:
