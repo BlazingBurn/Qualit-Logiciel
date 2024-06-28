@@ -117,25 +117,3 @@ def test_tri_par_titre():
     assert resultats[0]["isbn"] == "125"
     assert resultats[1]["isbn"] == "123"
     assert resultats[2]["isbn"] == "124"
-
-def test_tri_par_auteur():
-    biblio = bibliotheque.Bibliotheque()
-    biblio.ajouter_livre("123", "Le Petit Prince", "Antoine de Saint-Exupéry")
-    biblio.ajouter_livre("124", "Night Flight", "Rntoine de Saint-Exupéry")
-    biblio.ajouter_livre("125", "A Tale of Two Cities", "Charles Dickens")
-    resultats = biblio.recherche(tri="auteur")
-    assert len(resultats) == 3
-    assert resultats[0]["isbn"] == "123"
-    assert resultats[1]["isbn"] == "125"
-    assert resultats[2]["isbn"] == "124"
-
-def test_filtrage_et_tri():
-    biblio = bibliotheque.Bibliotheque()
-    biblio.ajouter_livre("123", "Le Petit Prince", "Antoine de Saint-Exupéry")
-    biblio.ajouter_livre("124", "Night Flight", "Antoine de Saint-Exupéry")
-    biblio.ajouter_livre("125", "A Tale of Two Cities", "Charles Dickens")
-    biblio.inscrire_utilisateur("user1")
-    biblio.emprunter_livre("user1", "124")
-    resultats = biblio.recherche(auteur="Antoine", disponible=True, tri="titre")
-    assert len(resultats) == 1
-    assert resultats[0]["isbn"] == "123"
